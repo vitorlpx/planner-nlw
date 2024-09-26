@@ -30,7 +30,7 @@ public class Activity {
     private LocalDateTime ocurrsAt;
 
     @ManyToOne
-    @Column(name = "trip_id", nullable = false)
+    @JoinColumn(name = "trip_id", nullable = false) // Mude o nome da coluna conforme necessário
     private Trip trip;
 
     public Activity(String title, String ocurrsAt, Trip trip) {
