@@ -13,8 +13,12 @@ public class ParticipantService {
     @Autowired
     private ParticipantRepository participantRepository;
 
-    public void registerParticipantsToEvent(List<String> participantsToInvite, Trip trip) {
+    public void registerParticipantsToEvent(List<String> participantsToInvite, Trip trip) throws Exception {
         List<Participant> participants = participantsToInvite.stream().map(email -> new Participant(email, trip)).toList();
+
+        if(trip.getStartsAt().isAfter(trip.getEndsAt())) {
+            throw new Exception("A data de início não pode ser depois da data de fim.");
+        }
 
         this.participantRepository.saveAll(participants);
 

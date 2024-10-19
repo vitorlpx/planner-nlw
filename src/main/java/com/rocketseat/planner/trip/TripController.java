@@ -1,17 +1,20 @@
 package com.rocketseat.planner.trip;
 
-import com.rocketseat.planner.activities.ActivityRequestPayload;
-import com.rocketseat.planner.activities.ActivityResponse;
-import com.rocketseat.planner.activities.ActivityService;
+import com.rocketseat.planner.activity.ActivityData;
+import com.rocketseat.planner.activity.ActivityRequestPayload;
+import com.rocketseat.planner.activity.ActivityResponse;
+import com.rocketseat.planner.activity.ActivityService;
+import com.rocketseat.planner.link.LinkData;
+import com.rocketseat.planner.link.LinkRequestPayload;
+import com.rocketseat.planner.link.LinkResponse;
+import com.rocketseat.planner.link.LinkService;
 import com.rocketseat.planner.participant.*;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -27,11 +30,14 @@ public class TripController {
     private ParticipantService participantService;
 
     @Autowired
+    private LinkService linkService;
+
+    @Autowired
     private TripRepository tripRepository;
 
     //criação de uma trip
     @PostMapping("/create")
-    public ResponseEntity<TripCreateResponse> createTrip(@RequestBody TripRequestPayload payload) {
+    public ResponseEntity<TripCreateResponse> createTrip(@RequestBody TripRequestPayload payload) throws Exception {
         Trip newTrip = new Trip(payload);
 
         this.tripRepository.save(newTrip);
@@ -114,7 +120,7 @@ public class TripController {
 
     //registrar uma atividade
     @PostMapping("/{id}/activities")
-    public ResponseEntity<ActivityResponse> registerActivity(@PathVariable UUID id, @RequestBody ActivityRequestPayload payload) {
+    public ResponseEntity<ActivityResponse> registerActivity(@PathVariable UUID id, @RequestBody ActivityRequestPayload payload) throws Exception {
         Optional<Trip> trip = this.tripRepository.findById(id);
 
         if(trip.isPresent()) {
@@ -126,6 +132,38 @@ public class TripController {
         }
 
         return ResponseEntity.notFound().build();
+    }
+
+    //consultar uma atividade
+    @GetMapping("/{id}/activities")
+    public ResponseEntity<List<ActivityData>> getAllActivities(@PathVariable UUID id) {
+        List<ActivityData> activityDataList = this.activityService.getAllActivitiesFromId(id);
+
+        return ResponseEntity.ok(activityDataList);
+    }
+
+    //registrar um link
+    @PostMapping("/{id}/links")
+    public ResponseEntity<LinkResponse> registerLink(@PathVariable UUID id, @RequestBody LinkRequestPayload payload) {
+        Optional<Trip> trip = this.tripRepository.findById(id);
+
+        if(trip.isPresent()) {
+            Trip rawTrip = trip.get();
+
+            LinkResponse linkResponse = this.linkService.registerLink(payload, rawTrip);
+
+            return ResponseEntity.ok(linkResponse);
+        }
+
+        return ResponseEntity.notFound().build();
+    }
+
+    //consultar um link
+    @GetMapping("/{id}/links")
+    public ResponseEntity<List<LinkData>> getAllLinks(@PathVariable UUID id) {
+        List<LinkData> linkDataList = this.linkService.getAllLinkFromId(id);
+
+        return ResponseEntity.ok(linkDataList);
     }
 
 }
