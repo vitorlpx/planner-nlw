@@ -19,7 +19,7 @@ Planner NLW é uma aplicação desenvolvida com Spring Boot para gerenciar viage
 
 ## Estrutura do Projeto
 
-```text
+```
 planner-nlw/
 ├── src/
 │   ├── main/
@@ -61,9 +61,8 @@ planner-nlw/
 1. Certifique-se de ter o Java 17 instalado.
 
 2. Clone este repositório:
-
-   ```
-   git clone https://github.com/seu-usuario/planner-nlw.git
+  ```
+  git clone https://github.com/seu-usuario/planner-nlw.git
   ```
 
 3. Navegue até o diretório do projeto:
@@ -79,6 +78,7 @@ planner-nlw/
   ```
 
 ### Endpoints da API
+
 ***Viagens***: 
 - POST **/trips/create** - Criar uma nova viagem.
 - GET **/trips/{id}/details** - Obter detalhes de uma viagem.
@@ -101,12 +101,13 @@ planner-nlw/
 O projeto utiliza o banco de dados em memória H2. As migrações de banco de dados são gerenciadas pelo Flyway e estão localizadas em **src/main/resources/db/migration**.
 
 ***Tabelas***
-- trips: Gerencia as viagens.
-- participants: Gerencia os participantes das viagens.
-- activities: Gerencia as atividades relacionadas às viagens.
-- links: Gerencia os links úteis relacionados às viagens.
+- **trips**: Gerencia as viagens.
+- **participants**: Gerencia os participantes das viagens.
+- **activities**: Gerencia as atividades relacionadas às viagens.
+- **links**: Gerencia os links úteis relacionados às viagens.
 
 ## Testes
+
 Os testes estão localizados em **src/test/java/com/rocketseat/planner**. Para executar os testes, utilize o comando:
 
 ```
