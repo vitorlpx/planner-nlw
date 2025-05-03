@@ -1,8 +1,8 @@
-# Planner NLW
+# Planner NLW 
 
 Planner NLW é uma aplicação desenvolvida com Spring Boot para gerenciar viagens, atividades, participantes e links relacionados a eventos de viagem.
 
-## Funcionalidades
+## 🎯 Funcionalidades 
 
 - **Gerenciamento de Viagens**:
   - Criar, atualizar, confirmar e visualizar detalhes de viagens.
@@ -17,7 +17,7 @@ Planner NLW é uma aplicação desenvolvida com Spring Boot para gerenciar viage
   - Registrar links úteis relacionados a uma viagem.
   - Listar todos os links de uma viagem.
 
-## Estrutura do Projeto
+## 🗂️ Estrutura do Projeto
 
 ```
 planner-nlw/
@@ -45,7 +45,7 @@ planner-nlw/
 └── README.md                                 # Documentação do projeto
 ```
 
-## Tecnologias Utilizadas
+## 🚀 Tecnologias Utilizadas
 
 - **Java 17**
 - **Spring Boot 3.3.1**
@@ -56,7 +56,7 @@ planner-nlw/
 - **Lombok** (para reduzir boilerplate de código)
 - **JUnit 5** (para testes)
 
-## Configuração do Ambiente
+## ⚙️ Configuração do Ambiente
 
 1. Certifique-se de ter o Java 17 instalado.
 
@@ -77,7 +77,7 @@ planner-nlw/
   ./mvnw spring-boot:run
   ```
 
-### Endpoints da API
+### 🔗 Endpoints da API
 
 ***Viagens***: 
 - POST **/trips/create** - Criar uma nova viagem.
@@ -97,7 +97,7 @@ planner-nlw/
 - POST **/trips/{id}/links** - Registrar um link relacionado a uma viagem.
 - GET **/trips/{id}/links** - Listar todos os links de uma viagem.
 
-## Banco de Dados
+## 🎲 Banco de Dados
 O projeto utiliza o banco de dados em memória H2. As migrações de banco de dados são gerenciadas pelo Flyway e estão localizadas em **src/main/resources/db/migration**.
 
 ***Tabelas***
@@ -106,7 +106,7 @@ O projeto utiliza o banco de dados em memória H2. As migrações de banco de da
 - **activities**: Gerencia as atividades relacionadas às viagens.
 - **links**: Gerencia os links úteis relacionados às viagens.
 
-## Testes
+## 🧩 Testes
 
 Os testes estão localizados em **src/test/java/com/rocketseat/planner**. Para executar os testes, utilize o comando:
 
