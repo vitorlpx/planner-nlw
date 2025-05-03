@@ -61,16 +61,19 @@ planner-nlw/
 1. Certifique-se de ter o Java 17 instalado.
 
 2. Clone este repositório:
+
    ```
    git clone https://github.com/seu-usuario/planner-nlw.git
   ```
 
 3. Navegue até o diretório do projeto:
+
   ```
   cd planner-nlw
   ```
 
 4. Execute o projeto com o Maven Wrapper:
+
   ```
   ./mvnw spring-boot:run
   ```
@@ -105,6 +108,7 @@ O projeto utiliza o banco de dados em memória H2. As migrações de banco de da
 
 ## Testes
 Os testes estão localizados em **src/test/java/com/rocketseat/planner**. Para executar os testes, utilize o comando:
+
 ```
 ./mvnw test
 ```
