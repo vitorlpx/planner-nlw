@@ -115,4 +115,4 @@ Os testes estão localizados em **src/test/java/com/rocketseat/planner**. Para e
 ```
 ---
 
-Desenvolvido por: **Vitor**.
+Desenvolvido por: **Vitor**, na aula do NLW, da **Rocketseat**.
